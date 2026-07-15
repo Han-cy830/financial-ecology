@@ -4,7 +4,7 @@
 负责解析市场气候系统，监测情绪和地缘政治风险
 """
 
-from typing import Dict, Any
+from typing import Dict, Any, List
 import numpy as np
 from .base_agent import BaseAgent, MarketData
 

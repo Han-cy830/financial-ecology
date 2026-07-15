@@ -1,0 +1,101 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "financial-ecology"
+version = "1.0.0"
+description = "金融生态学框架 - 将金融市场视为生态系统的智能资产配置框架"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+authors = [
+    {name = "Financial Ecology Community"}
+]
+keywords = ["finance", "asset-allocation", "hmm", "multi-agent", "risk-management"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.21.0",
+    "pandas>=1.3.0",
+    "scikit-learn>=1.0.0",
+    "hmmlearn>=0.2.7",
+    "matplotlib>=3.4.0",
+    "seaborn>=0.11.0",
+    "networkx>=2.6.0",
+]
+
+[project.optional-dependencies]
+data = [
+    "yfinance>=0.1.70",
+    "tushare>=1.2.0",
+]
+web = [
+    "streamlit>=1.10.0",
+    "plotly>=5.3.0",
+]
+dev = [
+    "pytest>=6.2.0",
+    "black>=21.7b0",
+    "flake8>=3.9.0",
+    "mypy>=0.910",
+    "sphinx>=4.1.0",
+    "sphinx-rtd-theme>=1.0.0",
+]
+all = [
+    "yfinance>=0.1.70",
+    "tushare>=1.2.0",
+    "streamlit>=1.10.0",
+    "plotly>=5.3.0",
+    "pytest>=6.2.0",
+    "black>=21.7b0",
+    "flake8>=3.9.0",
+    "mypy>=0.910",
+    "sphinx>=4.1.0",
+    "sphinx-rtd-theme>=1.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Han-cy830/financial-ecology"
+Documentation = "https://github.com/Han-cy830/financial-ecology/blob/main/README.md"
+Repository = "https://github.com/Han-cy830/financial-ecology"
+Issues = "https://github.com/Han-cy830/financial-ecology/issues"
+
+[project.scripts]
+fe-alloc = "tools.allocation_calculator.allocation_calculator:main"
+fe-demo = "tools.demo:main"
+fe-questionnaire = "tools.season_questionnaire.questionnaire:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*", "tools*"]
+
+[tool.setuptools.package-data]
+"src" = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.black]
+line-length = 100
+target-version = ["py38", "py39", "py310", "py311", "py312"]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true

@@ -79,7 +79,7 @@
 ### 安装
 
 ```bash
-git clone https://github.com/your-username/financial-ecology.git
+git clone https://github.com/Han-cy830/financial-ecology.git
 cd financial-ecology
 ./setup.sh
 ```
@@ -302,8 +302,8 @@ print(result['sharpe_ratio'])    # 夏普比率
 ## 📞 社区
 
 - 💬 **Discord**: [加入讨论](https://discord.gg/your-invite)
-- 📧 **Email**: your-email@example.com
-- 🐛 **Issues**: [提交问题](https://github.com/your-username/financial-ecology/issues)
+- 📧 **Email**: Han-cy830@users.noreply.github.com
+- 🐛 **Issues**: [提交问题](https://github.com/Han-cy830/financial-ecology/issues)
 
 ---
 

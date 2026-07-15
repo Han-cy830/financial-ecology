@@ -342,7 +342,7 @@ class RiskManager(BaseAgent):
 
         # 生态健康度预警
         if ecosystem_health['status'] in ['警示', '危险']:
-            alerts.append(f"⚠️ 生态健康度{alerts['status']}: 得分{alerts['score']}")
+            alerts.append(f"⚠️ 生态健康度{ecosystem_health['status']}: 得分{ecosystem_health['score']}")
 
         # 流动性预警
         if risk_metrics['liquidity_ratio'] < 0.10:
@@ -362,7 +362,7 @@ class RiskManager(BaseAgent):
             return {
                 'action': 'veto',
                 'confidence': 0.9,
-                'reasoning': f"触发风控否决：{l4_risk['action']}，生态健康度{alerts['status']}",
+                'reasoning': f"触发风控否决：{l4_risk['action']}，生态健康度{ecosystem_health['status']}",
                 'target_weights': self._calculate_safe_allocation(ecosystem_health)
             }
 
@@ -374,11 +374,11 @@ class RiskManager(BaseAgent):
         elif ecosystem_health['status'] == '警示':
             action = 'reduce_risk'
             confidence = 0.75
-            reasoning = f"生态健康度警示({alerts['score']}分)，适度防守"
+            reasoning = f"生态健康度警示({ecosystem_health['score']}分)，适度防守"
         else:
             action = 'approve'
             confidence = 0.8
-            reasoning = f"风险可控，VaR={var:.1%}，生态健康度{alerts['status']}"
+            reasoning = f"风险可控，VaR={var:.1%}，生态健康度{ecosystem_health['status']}"
 
         # 目标权重（如果被否决，调整为保守配置）
         if action == 'veto':

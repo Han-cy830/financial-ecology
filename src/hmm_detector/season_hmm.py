@@ -237,7 +237,7 @@ class SeasonHMM:
         weighted_allocation = {}
         for layer in ['L1', 'L2', 'L3', 'L4', 'L5']:
             weighted_allocation[layer] = sum(
-                probs[i] * base_allocations[season][layer]
+                probabilities[i] * base_allocations[season][layer]
                 for i, season in enumerate(self.SEASONS)
             )
 
